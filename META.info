@@ -1,0 +1,7 @@
+{
+	"name"		: "Text::Markdown",
+	"version"	: "*",
+	"description"	: "Perl 6 implementation of Markdown.",
+	"depends"	: [ ],
+	"source-url"	: "git://github.com/masak/markdown.git"
+}
