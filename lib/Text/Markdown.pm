@@ -1,6 +1,10 @@
 module Text::Markdown;
 
-class Text {
+class Document {
+    has @.children;
+}
+
+class Para {
     has $.text;
     has @.children;
 }
@@ -131,7 +135,7 @@ sub extract_tspans($text) {
 grammar Markdown {
     token TOP {
         ^ <paragraph>* % [\n\n+] $
-        { make $<paragraph>».ast }
+        { make Document.new(:children($<paragraph>».ast)) }
     }
 
     token paragraph {
@@ -144,11 +148,11 @@ grammar Markdown {
 
             my @children = extract_tspans($text);
 
-            make Text.new(:$text, :@children);
+            make Para.new(:$text, :@children);
         }
     }
 }
 
 sub parse-markdown(Cool $text) is export {
-    Markdown.parse($text).ast.list;
+    Markdown.parse($text).ast;
 }
