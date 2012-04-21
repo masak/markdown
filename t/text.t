@@ -24,7 +24,7 @@ use Text::Markdown;
     is $para.children[1].text, "italics", 'correct 2/3 tspan';
     is $para.children[2].text, " in it.", 'correct 3/3 tspan';
     is $para.children[0].font-style, "", 'correct 1/3 font-style';
-    is $para.children[1].font-style, "italics", 'correct 2/3 font-style';
+    is $para.children[1].font-style, "italic", 'correct 2/3 font-style';
     is $para.children[2].font-style, "", 'correct 3/3 font-style';
 }
 
@@ -63,11 +63,11 @@ use Text::Markdown;
     is $para.children[5].text, "and", 'correct 6/7 tspan';
     is $para.children[6].text, " combine them.", 'correct 7/7 tspan';
     is $para.children[0].font-style, "", 'correct 1/7 font-style';
-    is $para.children[1].font-style, "italics", 'correct 2/7 font-style';
+    is $para.children[1].font-style, "italic", 'correct 2/7 font-style';
     is $para.children[2].font-style, "", 'correct 3/7 font-style';
     is $para.children[3].font-style, "", 'correct 4/7 font-style';
     is $para.children[4].font-style, "", 'correct 5/7 font-style';
-    is $para.children[5].font-style, "italics", 'correct 6/7 font-style';
+    is $para.children[5].font-style, "italic", 'correct 6/7 font-style';
     is $para.children[6].font-style, "", 'correct 7/7 font-style';
     is $para.children[0].font-weight, "", 'correct 1/7 font-weight';
     is $para.children[1].font-weight, "", 'correct 2/7 font-weight';

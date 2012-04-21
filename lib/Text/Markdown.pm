@@ -124,7 +124,7 @@ sub extract_tspans($text) {
             my @tags = $0».Str;
             my $contents = $1;
             my %attrs;
-            if any(@tags) eq 'em' { %attrs<font-style> = 'italics' }
+            if any(@tags) eq 'em' { %attrs<font-style> = 'italic' }
             if any(@tags) eq 'strong' { %attrs<font-weight> = 'bold' }
             if any(@tags) eq 'code' { %attrs<font-family> = 'monospace' }
             take TSpan.new(:text($contents), |%attrs);
