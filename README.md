@@ -4,4 +4,5 @@ Perl 6 implementation of Markdown.
 
     use Text::Markdown;
 
-    say parse-markdown("Markdown *italics*, **bold** and `code`");
+    my $doc = parse-markdown("Markdown *italics*, **bold** and `code`");
+    say $doc.to_html;
