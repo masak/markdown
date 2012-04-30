@@ -12,8 +12,8 @@ class Para {
 class TSpan {
     has $.text;
     has $.font-style = '';
-	has $.font-weight = '';
-	has $.font-family = '';
+    has $.font-weight = '';
+    has $.font-family = '';
 }
 
 my %g_escape_table = <
