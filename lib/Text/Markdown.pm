@@ -2,6 +2,20 @@ module Text::Markdown;
 
 class Document {
     has @.children;
+
+    method to_html() {
+        my $s;
+        for self.children -> $c {
+            for $c.children -> $p {
+                if $p.text ~~ Match {
+                    $s ~= $p.text.orig;
+                } else {
+                    $s ~= $p.text;
+                }
+            }
+        }
+        return $s;
+    }
 }
 
 class Para {
