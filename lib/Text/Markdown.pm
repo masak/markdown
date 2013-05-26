@@ -7,11 +7,7 @@ class Document {
         my $s;
         for self.children -> $c {
             for $c.children -> $p {
-                if $p.text ~~ Match {
-                    $s ~= $p.text.orig;
-                } else {
-                    $s ~= $p.text;
-                }
+                $s ~= $p.text ~~ Match ?? $p.text.orig !! $p.text;
             }
         }
         return $s;
