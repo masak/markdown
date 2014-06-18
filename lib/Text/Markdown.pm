@@ -144,7 +144,7 @@ sub extract_tspans($text) {
 
 grammar Markdown {
     token TOP {
-        ^ <paragraph>* % [\n\n+] $
+        ^ <paragraph>* % [\n\n+] \n* $
         { make Document.new(:children($<paragraph>».ast)) }
     }
 
