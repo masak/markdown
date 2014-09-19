@@ -97,11 +97,11 @@ sub _DoCodeSpans($text is copy) {
 #         ... type <code>`bar`</code> ...
 #
 
-    $text ~~ s:g[ ('`'+) (.+?) <!after '`'> $0 <!before '`'> ] = (
+    $text ~~ s:g/ ('`'+) (.+?) <!after '`'> $0 <!before '`'> /{
         my $c = $1.trim;
         $c = _EncodeCode($c);
         "<code>{$c}</code>"
-    );
+    }/;
 
     return $text;
 }
