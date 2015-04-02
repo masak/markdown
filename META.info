@@ -2,6 +2,9 @@
 	"name"		: "Text::Markdown",
 	"version"	: "*",
 	"description"	: "Perl 6 implementation of Markdown.",
+	"provides"	: {
+		"Text::Markdown" : "lib/Text/Markdown.pm"
+	},
 	"depends"	: [ ],
 	"source-url"	: "git://github.com/masak/markdown.git"
 }
