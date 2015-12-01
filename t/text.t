@@ -99,4 +99,4 @@ use Text::Markdown;
     is $para.children[2].font-family, '', 'correct 3/3 font-family';
 }
 
-done;
+done-testing;

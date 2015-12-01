@@ -126,12 +126,10 @@ sub _UnescapeSpecialChars($text) {
 
 sub extract_tspans($text) {
     # XXX the below regex wouldn't work for e.g. <b><em><b>foo</b></em></b>
-    gather for $text.split(/'<'(\w+)'>'.*?'</'$0'>'/, :all) -> $piece {
-	    my ($normal, $taggy) = $piece.list;
-        take TSpan.new(:text($normal));
-        if $taggy {
+    gather for $text.split(/'<'(\w+)'>'.*?'</'$0'>'/, :v) -> $piece {
+        if $piece ~~ Match {
             # XXX highly specialized but works for our immediate purposes
-            $taggy.Str ~~ /^ ['<'(\w+)'>']+ (.*?) ['</'\w+'>']+ $/;
+            $piece.Str ~~ /^ ['<'(\w+)'>']+ (.*?) ['</'\w+'>']+ $/;
             my @tags = $0».Str;
             my $contents = $1;
             my %attrs;
@@ -139,6 +137,9 @@ sub extract_tspans($text) {
             if any(@tags) eq 'strong' { %attrs<font-weight> = 'bold' }
             if any(@tags) eq 'code' { %attrs<font-family> = 'monospace' }
             take TSpan.new(:text($contents), |%attrs);
+        }
+        else {
+            take TSpan.new(:text($piece));
         }
     }
 }
