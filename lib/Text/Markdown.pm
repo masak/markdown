@@ -1,4 +1,4 @@
-module Text::Markdown;
+unit module Text::Markdown;
 
 class Document {
     has @.children;

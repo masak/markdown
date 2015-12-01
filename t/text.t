@@ -25,7 +25,7 @@ use Text::Markdown;
     my $doc = parse-markdown "One slide with *italics* in it.";
     my $para = $doc.children[0];
 
-    isa_ok $para, Text::Markdown::Para;
+    isa-ok $para, Text::Markdown::Para;
     is +$para.children, 3, "The text has three elements";
     is $para.children[0].text, "One slide with ", 'correct 1/3 tspan';
     is $para.children[1].text, "italics", 'correct 2/3 tspan';
@@ -39,7 +39,7 @@ use Text::Markdown;
     my $doc = parse-markdown "One slide with **bold** in it.";
     my $para = $doc.children[0];
 
-    isa_ok $para, Text::Markdown::Para;
+    isa-ok $para, Text::Markdown::Para;
     is +$para.children, 3, "The text has three elements";
     is $para.children[0].text, "One slide with ", 'correct 1/3 tspan';
     is $para.children[1].text, "bold", 'correct 2/3 tspan';
@@ -60,7 +60,7 @@ use Text::Markdown;
     my $doc = parse-markdown "Now we use both *italics* and **bold** ***and*** combine them.";
     my $para = $doc.children[0];
 
-    isa_ok $para, Text::Markdown::Para;
+    isa-ok $para, Text::Markdown::Para;
     is +$para.children, 7, "The text has seven elements";
     is $para.children[0].text, "Now we use both ", 'correct 1/7 tspan';
     is $para.children[1].text, "italics", 'correct 2/7 tspan';
@@ -89,7 +89,7 @@ use Text::Markdown;
     my $doc = parse-markdown "This text contains `code` written in Perl 6.";
     my $para = $doc.children[0];
 
-    isa_ok $para, Text::Markdown::Para;
+    isa-ok $para, Text::Markdown::Para;
     is +$para.children, 3, "The text has 3 elements.";
     is $para.children[0].text, "This text contains ", 'correct 1/3 tspan';
     is $para.children[1].text, "code", 'correct 2/3 tspan';
